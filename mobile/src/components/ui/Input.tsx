@@ -76,16 +76,16 @@ const styles = StyleSheet.create({
   inputWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: colors.surface,
-    borderWidth: 1.5,
+    backgroundColor: colors.surfaceElevated,
+    borderWidth: 1,
     borderColor: colors.border,
-    borderRadius: radius.md,
+    borderRadius: radius.xl,
     paddingHorizontal: spacing.md,
-    height: 52,
+    height: 56,
   },
   inputFocused: {
     borderColor: colors.primary,
-    backgroundColor: colors.primaryLight,
+    backgroundColor: '#F4FFF8',
   },
   inputError: {
     borderColor: colors.danger,
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
   },
   eyeText: {
     ...typography.caption,
-    color: colors.primary,
+    color: colors.text,
     fontWeight: '600',
   },
   error: {

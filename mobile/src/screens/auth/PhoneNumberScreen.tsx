@@ -13,34 +13,58 @@ import { useAuth } from '../../context/AuthContext';
 import { colors, spacing, typography } from '../../theme';
 import type { AuthScreenProps } from '../../types';
 
-export function ForgotPasswordScreen({ navigation }: AuthScreenProps<'ForgotPassword'>) {
-  const { resetPassword } = useAuth();
-  const [email, setEmail] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+function normalizeGhanaNumber(input: string): string {
+  const cleaned = input.replace(/\s+/g, '').replace(/-/g, '');
 
-  const handleReset = async () => {
-    if (!email.trim()) {
-      setError('Email is required');
+  if (cleaned.startsWith('+233')) {
+    return cleaned;
+  }
+
+  if (cleaned.startsWith('233')) {
+    return `+${cleaned}`;
+  }
+
+  if (/^0\d{9}$/.test(cleaned)) {
+    return `+233${cleaned.slice(1)}`;
+  }
+
+  return cleaned;
+}
+
+function isValidGhanaNumber(input: string): boolean {
+  return /^\+233\d{9}$/.test(input);
+}
+
+export function PhoneNumberScreen({ navigation, route }: AuthScreenProps<'PhoneNumber'>) {
+  const { sendPhoneOtp } = useAuth();
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const handleSendOtp = async () => {
+    const normalizedPhone = normalizeGhanaNumber(phoneNumber.trim());
+
+    if (!isValidGhanaNumber(normalizedPhone)) {
+      setError('Use a valid Ghana number, e.g. +233241234567');
       return;
     }
-    if (!/\S+@\S+\.\S+/.test(email)) {
-      setError('Invalid email address');
-      return;
-    }
+
     setError('');
     setLoading(true);
-    const { error: resetError } = await resetPassword(email.trim());
+
+    const { error: otpError } = await sendPhoneOtp(normalizedPhone);
+
     setLoading(false);
-    if (resetError) {
-      Alert.alert('Error', resetError.message);
-    } else {
-      Alert.alert(
-        'Email Sent',
-        'Check your email for a password reset link.',
-        [{ text: 'OK', onPress: () => navigation.navigate('Login') }],
-      );
+
+    if (otpError) {
+      Alert.alert('OTP Error', otpError.message);
+      return;
     }
+
+    navigation.navigate('VerifyOtp', {
+      phoneNumber: normalizedPhone,
+      email: route.params.email,
+    });
   };
 
   return (
@@ -48,36 +72,30 @@ export function ForgotPasswordScreen({ navigation }: AuthScreenProps<'ForgotPass
       style={styles.container}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
-      <ScrollView
-        contentContainerStyle={styles.scroll}
-        keyboardShouldPersistTaps="handled"
-      >
+      <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
         <View style={styles.header}>
-          <Text style={styles.badge}>ACCOUNT RECOVERY</Text>
-          <Text style={styles.headerTitle}>Reset password</Text>
-          <Text style={styles.headerSubtitle}>We'll help you get back in.</Text>
+          <Text style={styles.badge}>PHONE VERIFICATION</Text>
+          <Text style={styles.headerTitle}>Add your mobile number</Text>
+          <Text style={styles.headerSubtitle}>We will send a one-time passcode via SMS.</Text>
         </View>
 
         <View style={styles.formCard}>
-          <Text style={styles.title}>Email reset link</Text>
-          <Text style={styles.subtitle}>
-            Enter the email address associated with your account and we'll send you a
-            link to reset your password.
-          </Text>
+          <Text style={styles.title}>Ghana mobile number</Text>
+          <Text style={styles.subtitle}>Supported format: 0241234567 or +233241234567</Text>
 
           <Input
-            label="Email"
-            placeholder="you@example.com"
-            value={email}
-            onChangeText={setEmail}
-            keyboardType="email-address"
+            label="Phone Number"
+            placeholder="+233241234567"
+            keyboardType="phone-pad"
+            value={phoneNumber}
+            onChangeText={setPhoneNumber}
             error={error}
           />
 
-          <Button title="Send Reset Link" onPress={handleReset} loading={loading} />
+          <Button title="Send OTP" onPress={handleSendOtp} loading={loading} />
 
           <Button
-            title="Back to Sign In"
+            title="Back to Login"
             onPress={() => navigation.navigate('Login')}
             variant="ghost"
             style={styles.backBtn}
@@ -97,6 +115,8 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'center',
     padding: spacing.lg,
+    paddingTop: spacing.xl,
+    paddingBottom: spacing.xl,
   },
   header: {
     backgroundColor: colors.accent,
@@ -130,13 +150,12 @@ const styles = StyleSheet.create({
   title: {
     ...typography.h3,
     color: colors.text,
-    marginBottom: spacing.sm,
+    marginBottom: spacing.xs,
   },
   subtitle: {
     ...typography.caption,
     color: colors.textSecondary,
     marginBottom: spacing.lg,
-    lineHeight: 22,
   },
   backBtn: {
     marginTop: spacing.sm,

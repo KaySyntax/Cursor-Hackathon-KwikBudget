@@ -69,8 +69,8 @@ export function Button({
 
 const styles = StyleSheet.create({
   base: {
-    height: 52,
-    borderRadius: radius.md,
+    height: 56,
+    borderRadius: radius.full,
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: spacing.lg,
@@ -91,12 +91,12 @@ const variantStyles: Record<ButtonVariant, ViewStyle> = {
     backgroundColor: colors.primary,
   },
   secondary: {
-    backgroundColor: colors.primaryLight,
+    backgroundColor: colors.accent,
   },
   outline: {
-    backgroundColor: colors.transparent,
-    borderWidth: 1.5,
-    borderColor: colors.primary,
+    backgroundColor: colors.surface,
+    borderWidth: 1,
+    borderColor: colors.text,
   },
   ghost: {
     backgroundColor: colors.transparent,
@@ -108,16 +108,16 @@ const variantStyles: Record<ButtonVariant, ViewStyle> = {
 
 const variantTextStyles: Record<ButtonVariant, TextStyle> = {
   primary: {
-    color: colors.textInverse,
+    color: colors.text,
   },
   secondary: {
-    color: colors.primary,
+    color: colors.textInverse,
   },
   outline: {
-    color: colors.primary,
+    color: colors.text,
   },
   ghost: {
-    color: colors.primary,
+    color: colors.text,
   },
   danger: {
     color: colors.textInverse,

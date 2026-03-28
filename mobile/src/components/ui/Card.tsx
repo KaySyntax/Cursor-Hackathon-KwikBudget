@@ -19,7 +19,7 @@ export function Card({ children, style, variant = 'default' }: CardProps) {
 
 const styles = StyleSheet.create({
   base: {
-    borderRadius: radius.lg,
+    borderRadius: radius.xl,
     padding: spacing.md,
     backgroundColor: colors.surface,
   },
@@ -27,21 +27,22 @@ const styles = StyleSheet.create({
 
 const variantStyles: Record<string, ViewStyle> = {
   default: {
-    shadowColor: '#000',
+    shadowColor: '#111111',
     shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 4,
-    elevation: 2,
+    shadowOpacity: 0.04,
+    shadowRadius: 6,
+    elevation: 1,
   },
   elevated: {
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
+    shadowColor: '#111111',
+    shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.1,
-    shadowRadius: 12,
-    elevation: 6,
+    shadowRadius: 18,
+    elevation: 8,
   },
   outlined: {
     borderWidth: 1,
     borderColor: colors.border,
+    backgroundColor: colors.surfaceElevated,
   },
 };

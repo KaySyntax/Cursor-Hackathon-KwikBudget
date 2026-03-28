@@ -2,26 +2,26 @@ import { TextStyle } from 'react-native';
 
 export const typography: Record<string, TextStyle> = {
   h1: {
-    fontSize: 32,
-    fontWeight: '700',
+    fontSize: 34,
+    fontWeight: '800',
     lineHeight: 40,
-    letterSpacing: -0.5,
+    letterSpacing: -0.9,
   },
   h2: {
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: '700',
     lineHeight: 32,
-    letterSpacing: -0.3,
+    letterSpacing: -0.5,
   },
   h3: {
-    fontSize: 20,
+    fontSize: 19,
     fontWeight: '600',
-    lineHeight: 28,
+    lineHeight: 26,
   },
   body: {
     fontSize: 16,
     fontWeight: '400',
-    lineHeight: 24,
+    lineHeight: 23,
   },
   bodyBold: {
     fontSize: 16,
@@ -29,9 +29,9 @@ export const typography: Record<string, TextStyle> = {
     lineHeight: 24,
   },
   caption: {
-    fontSize: 14,
+    fontSize: 13,
     fontWeight: '400',
-    lineHeight: 20,
+    lineHeight: 18,
   },
   small: {
     fontSize: 12,
@@ -40,14 +40,14 @@ export const typography: Record<string, TextStyle> = {
   },
   button: {
     fontSize: 16,
-    fontWeight: '600',
-    lineHeight: 24,
-    letterSpacing: 0.3,
+    fontWeight: '700',
+    lineHeight: 20,
+    letterSpacing: 0,
   },
   amount: {
-    fontSize: 36,
+    fontSize: 38,
     fontWeight: '700',
-    lineHeight: 44,
-    letterSpacing: -1,
+    lineHeight: 46,
+    letterSpacing: -1.3,
   },
 };
