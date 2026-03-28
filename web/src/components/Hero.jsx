@@ -1,6 +1,8 @@
 import { useId } from 'react'
 import { Logo } from './Logo'
 import { IsometricPhone } from './IsometricPhone'
+import { LanguageSwitcher } from './LanguageSwitcher'
+import { useTranslation } from '../context/TranslationContext'
 
 function SparkleGraphic() {
   return (
@@ -82,6 +84,8 @@ function ChartScreen() {
 }
 
 export function Hero() {
+  const { t } = useTranslation()
+
   return (
     <header
       className="relative overflow-hidden bg-kwik-forest text-kwik-white"
@@ -94,12 +98,15 @@ export function Hero() {
       <div className="relative z-10 mx-auto max-w-[1200px] px-6 pb-[72px] pt-7">
         <div className="mb-12 flex items-center justify-between">
           <Logo />
-          <button
-            type="button"
-            className="cursor-pointer rounded-full border-none bg-kwik-lime px-[18px] py-2.5 font-sans text-[0.85rem] font-bold text-kwik-black transition-colors active:scale-[0.98] hover:bg-kwik-lime-hover"
-          >
-            Menu
-          </button>
+          <div className="flex items-center gap-3">
+            <LanguageSwitcher />
+            <button
+              type="button"
+              className="cursor-pointer rounded-full border-none bg-kwik-lime px-[18px] py-2.5 font-sans text-[0.85rem] font-bold text-kwik-black transition-colors active:scale-[0.98] hover:bg-kwik-lime-hover"
+            >
+              {t('Menu')}
+            </button>
+          </div>
         </div>
 
         <div className="grid items-center gap-10 max-[900px]:grid-cols-1 grid-cols-2">
@@ -107,26 +114,25 @@ export function Hero() {
             <h1 className="mb-5 text-left font-sans text-[clamp(2rem,4vw,3.25rem)] font-extrabold leading-[1.08] tracking-tight text-white max-[900px]:mx-auto max-[900px]:text-center">
               <span className="inline-flex items-center gap-1.5 align-middle max-[900px]:justify-center">
                 <SparkleGraphic />
-                <span>Smarter</span>
+                <span>{t('Smarter')}</span>
               </span>{' '}
-              Financial Tools. Built for You.
+              {t('Financial Tools. Built for You.')}
             </h1>
             <p className="mb-7 max-w-[34ch] text-left font-sans text-[1.05rem] leading-[1.55] text-kwik-muted max-[900px]:mx-auto max-[900px]:text-center">
-              KwikBudget brings budgets, transfers, and investments together so you
-              can see the full picture—and act on it—in seconds, not spreadsheets.
+              {t('KwikBudget brings budgets, transfers, and investments together so you can see the full picture—and act on it—in seconds, not spreadsheets.')}
             </p>
             <div className="flex flex-wrap gap-3.5 max-[900px]:justify-center">
               <a
                 href="#cta"
                 className="inline-flex items-center justify-center rounded-full border-2 border-kwik-lime bg-kwik-lime px-[26px] py-3.5 font-sans text-[0.95rem] font-bold text-kwik-black no-underline transition-colors hover:border-kwik-lime-hover hover:bg-kwik-lime-hover"
               >
-                Get Started
+                {t('Get Started')}
               </a>
               <a
                 href="#features"
                 className="inline-flex items-center justify-center rounded-full border-2 border-kwik-outline bg-transparent px-[26px] py-3.5 font-sans text-[0.95rem] font-bold text-white no-underline transition-colors hover:border-kwik-lime hover:text-kwik-lime"
               >
-                Learn More
+                {t('Learn More')}
               </a>
             </div>
           </div>

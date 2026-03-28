@@ -1,3 +1,5 @@
+import { useTranslation } from '../context/TranslationContext'
+
 const brands = [
   { name: 'Mailchimp', abbr: 'M' },
   { name: 'Notion', abbr: 'N' },
@@ -8,6 +10,8 @@ const brands = [
 ]
 
 export function TrustBanner() {
+  const { t } = useTranslation()
+
   return (
     <section
       className="border-b border-kwik-forest/10 bg-white"
@@ -15,7 +19,7 @@ export function TrustBanner() {
     >
       <div className="mx-auto max-w-[1200px] px-6 py-9 pb-10 text-center">
         <p className="mb-7 font-sans text-[1.05rem] font-semibold text-kwik-black">
-          Get in on the growth of 5K+ companies
+          {t('Get in on the growth of 5K+ companies')}
         </p>
         <ul className="m-0 flex list-none flex-wrap items-center justify-center gap-x-10 gap-y-6 p-0">
           {brands.map((b) => (

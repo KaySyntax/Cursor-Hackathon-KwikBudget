@@ -1,23 +1,4 @@
-const reviews = [
-  {
-    name: 'Alex Rivera',
-    text:
-      'KwikBudget replaced three apps for our team. The live analytics alone paid for itself in week one.',
-    initials: 'AR',
-  },
-  {
-    name: 'Jordan Lee',
-    text:
-      'Transfers are fast and the security controls give our finance lead real peace of mind.',
-    initials: 'JL',
-  },
-  {
-    name: 'Sam Okonkwo',
-    text:
-      'Finally one place for budgets, crypto tracking, and day-to-day banking. Radically simple.',
-    initials: 'SO',
-  },
-]
+import { useTranslation } from '../context/TranslationContext'
 
 function Stars() {
   return (
@@ -31,6 +12,26 @@ function Stars() {
 }
 
 export function Testimonials() {
+  const { t } = useTranslation()
+
+  const reviews = [
+    {
+      name: 'Alex Rivera',
+      text: t('KwikBudget replaced three apps for our team. The live analytics alone paid for itself in week one.'),
+      initials: 'AR',
+    },
+    {
+      name: 'Jordan Lee',
+      text: t('Transfers are fast and the security controls give our finance lead real peace of mind.'),
+      initials: 'JL',
+    },
+    {
+      name: 'Sam Okonkwo',
+      text: t('Finally one place for budgets, crypto tracking, and day-to-day banking. Radically simple.'),
+      initials: 'SO',
+    },
+  ]
+
   return (
     <section
       className="bg-kwik-forest py-16 pb-14 text-kwik-white"
@@ -41,7 +42,7 @@ export function Testimonials() {
           className="mb-8 font-sans text-[clamp(1.5rem,2.5vw,2rem)] font-extrabold tracking-tight text-white"
           id="kb-testi-heading"
         >
-          Hear From Our Happy Users.
+          {t('Hear From Our Happy Users.')}
         </h2>
         <div
           className={[

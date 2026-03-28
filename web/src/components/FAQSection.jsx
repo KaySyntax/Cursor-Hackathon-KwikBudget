@@ -1,28 +1,6 @@
 import { useState } from 'react'
 import { cn } from '../lib/cn'
-
-const items = [
-  {
-    q: 'Is my data safe?',
-    a:
-      'Yes. KwikBudget encrypts data in transit and at rest, supports hardware-backed keys where available, and lets you review every active session from one place.',
-  },
-  {
-    q: 'Can I connect my existing bank accounts?',
-    a:
-      'You can link compatible accounts through our secure partners. Availability varies by region and institution.',
-  },
-  {
-    q: 'Do you support teams and accountants?',
-    a:
-      'Yes. Invite collaborators with role-based access, export reports, and share read-only views with your accountant.',
-  },
-  {
-    q: 'What does pricing look like?',
-    a:
-      'We offer a generous free tier for individuals and plans for teams that need advanced approvals and reporting.',
-  },
-]
+import { useTranslation } from '../context/TranslationContext'
 
 function MagnifyingIllustration() {
   return (
@@ -96,6 +74,26 @@ function MagnifyingIllustration() {
 
 export function FAQSection() {
   const [open, setOpen] = useState(0)
+  const { t } = useTranslation()
+
+  const items = [
+    {
+      q: t('Is my data safe?'),
+      a: t('Yes. KwikBudget encrypts data in transit and at rest, supports hardware-backed keys where available, and lets you review every active session from one place.'),
+    },
+    {
+      q: t('Can I connect my existing bank accounts?'),
+      a: t('You can link compatible accounts through our secure partners. Availability varies by region and institution.'),
+    },
+    {
+      q: t('Do you support teams and accountants?'),
+      a: t('Yes. Invite collaborators with role-based access, export reports, and share read-only views with your accountant.'),
+    },
+    {
+      q: t('What does pricing look like?'),
+      a: t('We offer a generous free tier for individuals and plans for teams that need advanced approvals and reporting.'),
+    },
+  ]
 
   return (
     <section
@@ -109,7 +107,7 @@ export function FAQSection() {
             className="mb-6 font-sans text-[clamp(1.5rem,2.5vw,2rem)] font-extrabold leading-tight tracking-tight text-kwik-black"
             id="kb-faq-heading"
           >
-            Frequently Asked Question
+            {t('Frequently Asked Question')}
           </h2>
           <MagnifyingIllustration />
         </div>
@@ -119,7 +117,7 @@ export function FAQSection() {
               const isOpen = open === i
               return (
                 <li
-                  key={item.q}
+                  key={i}
                   className="overflow-hidden rounded-[14px] border-2 border-kwik-forest/12 bg-white"
                 >
                   <button

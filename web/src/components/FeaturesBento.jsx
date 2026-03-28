@@ -1,4 +1,5 @@
 import { IsometricPhone } from './IsometricPhone'
+import { useTranslation } from '../context/TranslationContext'
 
 function IconBolt() {
   return (
@@ -85,21 +86,23 @@ const bentoShell =
   '[transform:perspective(1200px)_rotateX(10deg)_rotateZ(-6deg)_scale(0.95)]'
 
 export function FeaturesBento() {
+  const { t } = useTranslation()
+
   return (
     <section className="bg-white py-16 pb-[72px]" id="features">
       <div className="mx-auto max-w-[1200px] px-6">
         <h2 className="mx-auto mb-10 max-w-[20ch] text-center font-sans text-[clamp(1.65rem,3vw,2.35rem)] font-extrabold tracking-tight text-kwik-black">
-          Manage Your Money, All in One Place.
+          {t('Manage Your Money, All in One Place.')}
         </h2>
         <div className="grid grid-cols-3 gap-5 max-[900px]:grid-cols-1">
           <article className="col-span-2 rounded-[20px] border-2 border-kwik-forest/12 bg-white p-6 max-[900px]:col-span-1">
             <div className="flex min-h-[200px] items-stretch gap-6 max-[900px]:min-h-0 max-[900px]:flex-col">
               <div className="flex w-[38%] flex-col justify-center max-[900px]:w-full">
                 <h3 className="mb-2 font-sans text-[1.1rem] font-extrabold text-kwik-black">
-                  Real-Time Analytics
+                  {t('Real-Time Analytics')}
                 </h3>
                 <p className="m-0 font-sans text-[0.92rem] leading-normal text-[#444]">
-                  Live dashboards that surface trends before they become surprises.
+                  {t('Live dashboards that surface trends before they become surprises.')}
                 </p>
               </div>
               <div className="flex flex-1 items-center justify-center">
@@ -113,41 +116,40 @@ export function FeaturesBento() {
           <article className="flex flex-col gap-4 rounded-[20px] border-2 border-kwik-forest/12 bg-white p-6 max-[900px]:col-span-1">
             <IconBolt />
             <h3 className="m-0 font-sans text-[1.1rem] font-extrabold text-kwik-black">
-              Instant Transfers
+              {t('Instant Transfers')}
             </h3>
             <p className="m-0 font-sans text-[0.92rem] leading-normal text-[#444]">
-              Send money domestically or cross-border with clear fees and instant
-              confirmations.
+              {t('Send money domestically or cross-border with clear fees and instant confirmations.')}
             </p>
           </article>
 
           <article className="flex flex-col gap-3.5 rounded-[20px] border-2 border-kwik-forest/12 bg-white p-6">
             <IconWallet />
             <h3 className="m-0 font-sans text-[1.1rem] font-extrabold text-kwik-black">
-              Budgeting Tools
+              {t('Budgeting Tools')}
             </h3>
             <p className="m-0 font-sans text-[0.92rem] leading-normal text-[#444]">
-              Envelope-style budgets, alerts, and auto-categorization built in.
+              {t('Envelope-style budgets, alerts, and auto-categorization built in.')}
             </p>
           </article>
 
           <article className="flex flex-col gap-3.5 rounded-[20px] border-2 border-kwik-forest/12 bg-white p-6">
             <IconGlobe />
             <h3 className="m-0 font-sans text-[1.1rem] font-extrabold text-kwik-black">
-              Global Payments
+              {t('Global Payments')}
             </h3>
             <p className="m-0 font-sans text-[0.92rem] leading-normal text-[#444]">
-              Pay and get paid in the currencies your life actually uses.
+              {t('Pay and get paid in the currencies your life actually uses.')}
             </p>
           </article>
 
           <article className="flex flex-col gap-3.5 rounded-[20px] border-2 border-kwik-forest/12 bg-white p-6">
             <IconCrypto />
             <h3 className="m-0 font-sans text-[1.1rem] font-extrabold text-kwik-black">
-              Crypto & Investment
+              {t('Crypto & Investment')}
             </h3>
             <p className="m-0 font-sans text-[0.92rem] leading-normal text-[#444]">
-              Track tokens and traditional holdings alongside everyday cash flow.
+              {t('Track tokens and traditional holdings alongside everyday cash flow.')}
             </p>
           </article>
         </div>

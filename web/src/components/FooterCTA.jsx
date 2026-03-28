@@ -1,5 +1,6 @@
 import { Logo } from './Logo'
 import { IsometricPhone } from './IsometricPhone'
+import { useTranslation } from '../context/TranslationContext'
 
 function FooterPhoneScreen() {
   return (
@@ -18,6 +19,8 @@ function FooterPhoneScreen() {
 const footerShell = '[transform:perspective(1200px)_rotateX(16deg)_rotateZ(10deg)]'
 
 export function FooterCTA() {
+  const { t } = useTranslation()
+
   return (
     <footer className="bg-white px-6 pb-12">
       <div
@@ -28,14 +31,13 @@ export function FooterCTA() {
           <div>
             <Logo />
             <p className="mt-4 max-w-[28ch] font-sans text-[0.92rem] leading-[1.55] text-kwik-muted max-[960px]:max-w-none">
-              KwikBudget helps people and teams move money with clarity—budgeting,
-              transfers, and investments in one place.
+              {t('KwikBudget helps people and teams move money with clarity—budgeting, transfers, and investments in one place.')}
             </p>
           </div>
           <nav className="grid grid-cols-2 gap-6" aria-label="Quick links">
             <div>
               <h3 className="m-0 mb-3.5 font-sans text-[0.85rem] font-extrabold uppercase tracking-wider text-kwik-lime">
-                Quick Links
+                {t('Quick Links')}
               </h3>
               <ul className="m-0 flex list-none flex-col gap-2.5 p-0">
                 <li>
@@ -43,7 +45,7 @@ export function FooterCTA() {
                     href="#features"
                     className="font-sans text-[0.92rem] text-kwik-muted no-underline transition-colors hover:text-white"
                   >
-                    Features
+                    {t('Features')}
                   </a>
                 </li>
                 <li>
@@ -51,7 +53,7 @@ export function FooterCTA() {
                     href="#security"
                     className="font-sans text-[0.92rem] text-kwik-muted no-underline transition-colors hover:text-white"
                   >
-                    Security
+                    {t('Security')}
                   </a>
                 </li>
                 <li>
@@ -59,14 +61,14 @@ export function FooterCTA() {
                     href="#faq"
                     className="font-sans text-[0.92rem] text-kwik-muted no-underline transition-colors hover:text-white"
                   >
-                    FAQ
+                    {t('FAQ')}
                   </a>
                 </li>
               </ul>
             </div>
             <div>
               <h3 className="m-0 mb-3.5 font-sans text-[0.85rem] font-extrabold uppercase tracking-wider text-kwik-lime">
-                Legal
+                {t('Legal')}
               </h3>
               <ul className="m-0 flex list-none flex-col gap-2.5 p-0">
                 <li>
@@ -74,7 +76,7 @@ export function FooterCTA() {
                     href="#"
                     className="font-sans text-[0.92rem] text-kwik-muted no-underline transition-colors hover:text-white"
                   >
-                    Privacy
+                    {t('Privacy')}
                   </a>
                 </li>
                 <li>
@@ -82,7 +84,7 @@ export function FooterCTA() {
                     href="#"
                     className="font-sans text-[0.92rem] text-kwik-muted no-underline transition-colors hover:text-white"
                   >
-                    Terms
+                    {t('Terms')}
                   </a>
                 </li>
                 <li>
@@ -90,7 +92,7 @@ export function FooterCTA() {
                     href="#"
                     className="font-sans text-[0.92rem] text-kwik-muted no-underline transition-colors hover:text-white"
                   >
-                    Cookies
+                    {t('Cookies')}
                   </a>
                 </li>
               </ul>
@@ -98,13 +100,13 @@ export function FooterCTA() {
           </nav>
           <div className="relative min-h-[200px] overflow-hidden rounded-[20px] bg-kwik-lime px-[22px] pb-[100px] pt-6 text-kwik-black max-[960px]:pb-[88px]">
             <p className="relative z-10 m-0 mb-4 max-w-[16ch] font-sans text-[1.15rem] font-extrabold leading-tight">
-              Start Managing Your Money Smarter Today
+              {t('Start Managing Your Money Smarter Today')}
             </p>
             <a
               href="#top"
               className="relative z-10 inline-flex rounded-full bg-kwik-black px-[22px] py-3 font-sans text-[0.9rem] font-extrabold text-kwik-lime no-underline transition-opacity active:scale-[0.98] hover:opacity-90"
             >
-              Get Started
+              {t('Get Started')}
             </a>
             <div className="absolute -bottom-10 -right-3 z-0 -rotate-12">
               <IsometricPhone
@@ -118,7 +120,7 @@ export function FooterCTA() {
           </div>
         </div>
         <p className="mt-7 text-center font-sans text-[0.8rem] text-kwik-muted">
-          © {new Date().getFullYear()} KwikBudget. All rights reserved.
+          © {new Date().getFullYear()} KwikBudget. {t('All rights reserved.')}
         </p>
       </div>
     </footer>
