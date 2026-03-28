@@ -1,9 +1,33 @@
 import { IsometricPhone } from './IsometricPhone'
 
-function IconBolt() {
+function IconLock() {
   return (
     <span className="flex size-[52px] items-center justify-center rounded-full border-2 border-kwik-lime/55 bg-kwik-lime/20 text-kwik-forest">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect
+          x="5"
+          y="11"
+          width="14"
+          height="10"
+          rx="2"
+          stroke="currentColor"
+          strokeWidth="2"
+        />
+        <path
+          d="M8 11V8a4 4 0 0 1 8 0v3"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+        />
+      </svg>
+    </span>
+  )
+}
+
+function IconBolt() {
+  return (
+    <span className="flex size-[46px] items-center justify-center rounded-full border-2 border-kwik-lime/55 bg-kwik-lime/20 text-kwik-forest">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path
           d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"
           stroke="currentColor"
@@ -34,27 +58,12 @@ function IconWallet() {
   )
 }
 
-function IconGlobe() {
-  return (
-    <span className="flex size-[46px] items-center justify-center rounded-full border-2 border-kwik-lime/55 bg-kwik-lime/20 text-kwik-forest">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" />
-        <path
-          d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"
-          stroke="currentColor"
-          strokeWidth="2"
-        />
-      </svg>
-    </span>
-  )
-}
-
-function IconCrypto() {
+function IconInsights() {
   return (
     <span className="flex size-[46px] items-center justify-center rounded-full border-2 border-kwik-lime/55 bg-kwik-lime/20 text-kwik-forest">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path
-          d="M12 3v18M8 7h6a4 4 0 0 1 0 8H8M8 7v10M14 15h2a4 4 0 0 0 0-8h-2"
+          d="M4 19V5M12 19V9M20 19v-6M8 21v-2M16 21v-2"
           stroke="currentColor"
           strokeWidth="2"
           strokeLinecap="round"
@@ -67,7 +76,7 @@ function IconCrypto() {
 function AnalyticsPhoneScreen() {
   return (
     <div className="flex h-full flex-col p-2.5">
-      <div className="mb-2 font-sans text-[0.65rem] text-kwik-muted">Weekly spend</div>
+      <div className="mb-2 font-sans text-[0.65rem] text-kwik-muted">Daily allowance</div>
       <div className="flex flex-1 items-end gap-1">
         {[55, 72, 48, 90, 66, 78].map((h, i) => (
           <span
@@ -88,18 +97,23 @@ export function FeaturesBento() {
   return (
     <section className="bg-white py-16 pb-[72px]" id="features">
       <div className="mx-auto max-w-[1200px] px-6">
-        <h2 className="mx-auto mb-10 max-w-[20ch] text-center font-sans text-[clamp(1.65rem,3vw,2.35rem)] font-extrabold tracking-tight text-kwik-black">
-          Manage Your Money, All in One Place.
+        <h2 className="mx-auto mb-4 max-w-[22ch] text-center font-sans text-[clamp(1.65rem,3vw,2.35rem)] font-extrabold tracking-tight text-kwik-black">
+          Not just tracking—real spending control.
         </h2>
+        <p className="mx-auto mb-10 max-w-[40rem] text-center font-sans text-[0.95rem] leading-relaxed text-[#444]">
+          Set your total and time period, let KwikBudget lock the rest, and live on a daily wallet
+          that resets every morning. Simple on the surface, strict where it counts.
+        </p>
         <div className="grid grid-cols-3 gap-5 max-[900px]:grid-cols-1">
           <article className="col-span-2 rounded-[20px] border-2 border-kwik-forest/12 bg-white p-6 max-[900px]:col-span-1">
             <div className="flex min-h-[200px] items-stretch gap-6 max-[900px]:min-h-0 max-[900px]:flex-col">
               <div className="flex w-[38%] flex-col justify-center max-[900px]:w-full">
                 <h3 className="mb-2 font-sans text-[1.1rem] font-extrabold text-kwik-black">
-                  Real-Time Analytics
+                  Daily Wallet
                 </h3>
                 <p className="m-0 font-sans text-[0.92rem] leading-normal text-[#444]">
-                  Live dashboards that surface trends before they become surprises.
+                  You can only spend what’s unlocked for that day—so you don’t overspend early and
+                  scrape by later. Your allowance is automatic; your excuses aren’t.
                 </p>
               </div>
               <div className="flex flex-1 items-center justify-center">
@@ -111,43 +125,46 @@ export function FeaturesBento() {
           </article>
 
           <article className="flex flex-col gap-4 rounded-[20px] border-2 border-kwik-forest/12 bg-white p-6 max-[900px]:col-span-1">
-            <IconBolt />
+            <IconLock />
             <h3 className="m-0 font-sans text-[1.1rem] font-extrabold text-kwik-black">
-              Instant Transfers
+              Smart Lock
             </h3>
             <p className="m-0 font-sans text-[0.92rem] leading-normal text-[#444]">
-              Send money domestically or cross-border with clear fees and instant
-              confirmations.
+              Money stays locked in the app for your chosen period. The daily engine releases funds
+              gradually—no more “I’ll fix it next week.”
             </p>
           </article>
 
           <article className="flex flex-col gap-3.5 rounded-[20px] border-2 border-kwik-forest/12 bg-white p-6">
             <IconWallet />
             <h3 className="m-0 font-sans text-[1.1rem] font-extrabold text-kwik-black">
-              Budgeting Tools
+              Budget setup
             </h3>
             <p className="m-0 font-sans text-[0.92rem] leading-normal text-[#444]">
-              Envelope-style budgets, alerts, and auto-categorization built in.
+              Enter your total (e.g. GHS&nbsp;600) and how long it needs to last (e.g. 30 days).
+              KwikBudget handles the math and the lock.
             </p>
           </article>
 
           <article className="flex flex-col gap-3.5 rounded-[20px] border-2 border-kwik-forest/12 bg-white p-6">
-            <IconGlobe />
+            <IconBolt />
             <h3 className="m-0 font-sans text-[1.1rem] font-extrabold text-kwik-black">
-              Global Payments
+              Emergency unlock
             </h3>
             <p className="m-0 font-sans text-[0.92rem] leading-normal text-[#444]">
-              Pay and get paid in the currencies your life actually uses.
+              Real life happens. Tap extra funds when you must—but expect consequences like a lower
+              future daily allowance or a cooldown so shortcuts don’t become habits.
             </p>
           </article>
 
           <article className="flex flex-col gap-3.5 rounded-[20px] border-2 border-kwik-forest/12 bg-white p-6">
-            <IconCrypto />
+            <IconInsights />
             <h3 className="m-0 font-sans text-[1.1rem] font-extrabold text-kwik-black">
-              Crypto & Investment
+              Insights & rewards
             </h3>
             <p className="m-0 font-sans text-[0.92rem] leading-normal text-[#444]">
-              Track tokens and traditional holdings alongside everyday cash flow.
+              Premium adds deeper analytics, multiple budgets, and gamified streaks—so staying
+              disciplined feels motivating, not punishing.
             </p>
           </article>
         </div>

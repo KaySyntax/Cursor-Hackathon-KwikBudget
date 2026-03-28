@@ -11,11 +11,12 @@ export function TrustBanner() {
   return (
     <section
       className="border-b border-kwik-forest/10 bg-white"
-      aria-label="Trusted by growing companies"
+      aria-label="Who KwikBudget is for"
     >
       <div className="mx-auto max-w-[1200px] px-6 py-9 pb-10 text-center">
-        <p className="mb-7 font-sans text-[1.05rem] font-semibold text-kwik-black">
-          Get in on the growth of 5K+ companies
+        <p className="mb-7 max-w-[36rem] mx-auto font-sans text-[1.05rem] font-semibold leading-snug text-kwik-black">
+          For students, young professionals, and anyone on a fixed income who’s tired of running out
+          of money before the month ends.
         </p>
         <ul className="m-0 flex list-none flex-wrap items-center justify-center gap-x-10 gap-y-6 p-0">
           {brands.map((b) => (
