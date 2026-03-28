@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Logo } from './Logo'
 import { IsometricPhone } from './IsometricPhone'
 import { useTranslation } from '../context/TranslationContext'
@@ -42,28 +43,28 @@ export function FooterCTA() {
               </h3>
               <ul className="m-0 flex list-none flex-col gap-2.5 p-0">
                 <li>
-                  <a
-                    href="#features"
+                  <Link
+                    to="/features"
                     className="font-sans text-[0.92rem] text-kwik-muted no-underline transition-colors hover:text-white"
                   >
                     {t('Features')}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#security"
+                  <Link
+                    to="/security"
                     className="font-sans text-[0.92rem] text-kwik-muted no-underline transition-colors hover:text-white"
                   >
                     {t('Security')}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#faq"
+                  <Link
+                    to="/faq"
                     className="font-sans text-[0.92rem] text-kwik-muted no-underline transition-colors hover:text-white"
                   >
                     {t('FAQ')}
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -73,28 +74,28 @@ export function FooterCTA() {
               </h3>
               <ul className="m-0 flex list-none flex-col gap-2.5 p-0">
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    to="/privacy"
                     className="font-sans text-[0.92rem] text-kwik-muted no-underline transition-colors hover:text-white"
                   >
                     {t('Privacy')}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    to="/terms"
                     className="font-sans text-[0.92rem] text-kwik-muted no-underline transition-colors hover:text-white"
                   >
                     {t('Terms')}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    to="/cookies"
                     className="font-sans text-[0.92rem] text-kwik-muted no-underline transition-colors hover:text-white"
                   >
                     {t('Cookies')}
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -103,12 +104,12 @@ export function FooterCTA() {
             <p className="relative z-10 m-0 mb-4 max-w-[18ch] font-sans text-[1.15rem] font-extrabold leading-tight">
               {t('Stop surviving the month. Start owning each day.')}
             </p>
-            <a
-              href="#top"
+            <Link
+              to="/"
               className="relative z-10 inline-flex rounded-full bg-kwik-black px-[22px] py-3 font-sans text-[0.9rem] font-extrabold text-kwik-lime no-underline transition-opacity active:scale-[0.98] hover:opacity-90"
             >
               {t('Get Started')}
-            </a>
+            </Link>
             <div className="absolute -bottom-10 -right-3 z-0 -rotate-12">
               <IsometricPhone
                 tilt="right"

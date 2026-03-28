@@ -1,9 +1,10 @@
+import { Link } from 'react-router-dom'
 import { cn } from '../lib/cn'
 
 export function Logo({ className = '', variant = 'light' }) {
   return (
-    <a
-      href="#top"
+    <Link
+      to="/"
       className={cn(
         'inline-flex items-center gap-2.5 no-underline font-sans text-[1.2rem] font-extrabold tracking-tight',
         variant === 'dark' ? 'text-kwik-black' : 'text-inherit',
@@ -37,6 +38,6 @@ export function Logo({ className = '', variant = 'light' }) {
         </svg>
       </span>
       <span>KwikBudget</span>
-    </a>
+    </Link>
   )
 }
