@@ -5,6 +5,8 @@ export type AuthStackParamList = {
   Login: undefined;
   Register: undefined;
   ForgotPassword: undefined;
+  PhoneNumber: { email: string };
+  VerifyOtp: { phoneNumber: string; email: string };
 };
 
 export type MainTabParamList = {

@@ -51,13 +51,14 @@ export function LoginScreen({ navigation }: AuthScreenProps<'Login'>) {
         keyboardShouldPersistTaps="handled"
       >
         <View style={styles.header}>
+          <Text style={styles.badge}>KWIKBUDGET</Text>
           <Text style={styles.appName}>{APP_NAME}</Text>
-          <Text style={styles.tagline}>{APP_TAGLINE}</Text>
+          <Text style={styles.tagline}>Budget at the speed of your day.</Text>
         </View>
 
-        <View style={styles.form}>
+        <View style={styles.formCard}>
           <Text style={styles.title}>Welcome back</Text>
-          <Text style={styles.subtitle}>Sign in to continue managing your budget</Text>
+          <Text style={styles.subtitle}>Sign in to unlock your daily spending flow.</Text>
 
           <Input
             label="Email"
@@ -92,7 +93,7 @@ export function LoginScreen({ navigation }: AuthScreenProps<'Login'>) {
           <Button
             title="Create Account"
             onPress={() => navigation.navigate('Register')}
-            variant="outline"
+            variant="secondary"
           />
         </View>
       </ScrollView>
@@ -109,30 +110,46 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'center',
     padding: spacing.lg,
+    paddingTop: spacing.xl,
+    paddingBottom: spacing.xl,
   },
   header: {
-    alignItems: 'center',
-    marginBottom: spacing.xl,
+    backgroundColor: colors.accent,
+    borderRadius: 26,
+    padding: spacing.lg,
+    marginBottom: spacing.lg,
+  },
+  badge: {
+    ...typography.small,
+    color: colors.primary,
+    letterSpacing: 2,
+    fontWeight: '700',
+    marginBottom: spacing.sm,
   },
   appName: {
     ...typography.h1,
-    color: colors.primary,
+    color: colors.textInverse,
   },
   tagline: {
-    ...typography.caption,
-    color: colors.textSecondary,
+    ...typography.body,
+    color: '#D4D8D2',
     marginTop: spacing.xs,
   },
-  form: {
-    marginBottom: spacing.xl,
+  formCard: {
+    backgroundColor: colors.surface,
+    borderRadius: 26,
+    borderWidth: 1,
+    borderColor: colors.border,
+    padding: spacing.lg,
+    marginBottom: spacing.lg,
   },
   title: {
     ...typography.h2,
     color: colors.text,
-    marginBottom: spacing.xs,
+    marginBottom: spacing.sm,
   },
   subtitle: {
-    ...typography.caption,
+    ...typography.body,
     color: colors.textSecondary,
     marginBottom: spacing.lg,
   },

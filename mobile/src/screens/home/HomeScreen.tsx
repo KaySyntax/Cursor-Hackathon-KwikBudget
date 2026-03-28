@@ -12,12 +12,12 @@ export function HomeScreen() {
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
       <View style={styles.header}>
-        <Text style={styles.greeting}>Hello, {displayName}</Text>
-        <Text style={styles.subGreeting}>Here's your {APP_NAME} overview</Text>
+        <Text style={styles.greeting}>Hi, {displayName}</Text>
+        <Text style={styles.subGreeting}>{APP_NAME} keeps your cash in control.</Text>
       </View>
 
       <Card variant="elevated" style={styles.balanceCard}>
-        <Text style={styles.balanceLabel}>Today's Available</Text>
+        <Text style={styles.balanceLabel}>Available today</Text>
         <Text style={styles.balanceAmount}>{CURRENCY_SYMBOL}0.00</Text>
         <View style={styles.balanceRow}>
           <View style={styles.balanceStat}>
@@ -35,15 +35,15 @@ export function HomeScreen() {
       <Text style={styles.sectionTitle}>Quick Actions</Text>
       <View style={styles.actionsRow}>
         <Card style={styles.actionCard}>
-          <Text style={styles.actionIcon}>🔒</Text>
+          <Text style={styles.actionIcon}>◆</Text>
           <Text style={styles.actionLabel}>Lock Funds</Text>
         </Card>
         <Card style={styles.actionCard}>
-          <Text style={styles.actionIcon}>📊</Text>
+          <Text style={styles.actionIcon}>▮</Text>
           <Text style={styles.actionLabel}>View Budget</Text>
         </Card>
         <Card style={styles.actionCard}>
-          <Text style={styles.actionIcon}>📈</Text>
+          <Text style={styles.actionIcon}>◎</Text>
           <Text style={styles.actionLabel}>History</Text>
         </Card>
       </View>
@@ -66,10 +66,11 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: spacing.lg,
+    paddingTop: spacing.xl,
     paddingBottom: spacing.xxl,
   },
   header: {
-    marginBottom: spacing.lg,
+    marginBottom: spacing.md,
   },
   greeting: {
     ...typography.h2,
@@ -81,14 +82,17 @@ const styles = StyleSheet.create({
     marginTop: spacing.xs,
   },
   balanceCard: {
-    backgroundColor: colors.primary,
+    backgroundColor: colors.accent,
     padding: spacing.lg,
     marginBottom: spacing.lg,
+    borderRadius: 30,
   },
   balanceLabel: {
     ...typography.caption,
-    color: colors.textInverse,
+    color: colors.primary,
     opacity: 0.8,
+    letterSpacing: 0.8,
+    textTransform: 'uppercase',
   },
   balanceAmount: {
     ...typography.amount,
@@ -111,7 +115,7 @@ const styles = StyleSheet.create({
   },
   statLabel: {
     ...typography.small,
-    color: colors.textInverse,
+    color: '#C8CCC6',
     opacity: 0.7,
   },
   statValue: {
@@ -133,9 +137,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     paddingVertical: spacing.md,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: colors.border,
   },
   actionIcon: {
-    fontSize: 28,
+    fontSize: 24,
+    color: colors.primaryDark,
     marginBottom: spacing.xs,
   },
   actionLabel: {
@@ -146,6 +154,7 @@ const styles = StyleSheet.create({
   emptyCard: {
     alignItems: 'center',
     paddingVertical: spacing.xl,
+    borderRadius: 22,
   },
   emptyText: {
     ...typography.body,

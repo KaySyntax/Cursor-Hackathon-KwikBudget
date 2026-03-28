@@ -78,20 +78,20 @@ export function SecuritySection() {
         </div>
         <div className="max-[960px]:order-3">
           <p className="mb-4 font-sans text-[0.98rem] leading-[1.55] text-[#3d3d3d]">
-            {t('KwikBudget is designed with enterprise-grade safeguards and transparent controls so you stay in charge of every login, device, and approval.')}
+            {t("Your budget rules only work if you trust the app holding the lock. KwikBudget is built so you can see what's protected, what's spendable today, and who's signed in—without giving up control when life gets messy.")}
           </p>
           <ul className="m-0 list-disc pl-[1.15rem] font-sans text-[0.92rem] leading-[1.55] text-[#444] max-[960px]:mx-auto max-[960px]:max-w-[480px] max-[960px]:text-left">
             <li className="mb-2.5 last:mb-0">
-              {t('End-to-end encryption for sensitive sessions and documents')}
+              {t('Encryption for data in transit and at rest, plus secure sign-in options on mobile')}
             </li>
             <li className="mb-2.5 last:mb-0">
-              {t('Real-time fraud monitoring and instant freeze tools')}
+              {t("Clear separation between locked funds, today's allowance, and emergency unlock events")}
             </li>
             <li className="mb-2.5 last:mb-0">
-              {t('SOC 2-aligned practices and routine third-party audits')}
+              {t('Device and session visibility so you can spot anything unusual quickly')}
             </li>
             <li className="mb-2.5 last:mb-0">
-              {t('Granular permissions for teams and accountants')}
+              {t('Honest logging of unlocks and consequences—no hidden taps that drain your plan')}
             </li>
           </ul>
         </div>

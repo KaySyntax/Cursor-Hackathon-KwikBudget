@@ -1,4 +1,5 @@
 import React from 'react';
+import { Text } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeScreen } from '../screens/home/HomeScreen';
 import { BudgetScreen } from '../screens/budget/BudgetScreen';
@@ -11,10 +12,10 @@ import type { MainTabParamList } from '../types';
 const Tab = createBottomTabNavigator<MainTabParamList>();
 
 const TAB_ICONS: Record<keyof MainTabParamList, { focused: string; default: string }> = {
-  Home: { focused: '🏠', default: '🏡' },
-  Budget: { focused: '📊', default: '📊' },
-  Wallet: { focused: '💰', default: '💰' },
-  Profile: { focused: '👤', default: '👤' },
+  Home: { focused: '●', default: '○' },
+  Budget: { focused: '▮', default: '▯' },
+  Wallet: { focused: '◆', default: '◇' },
+  Profile: { focused: '◉', default: '◎' },
 };
 
 export function MainNavigator() {
@@ -23,20 +24,24 @@ export function MainNavigator() {
       screenOptions={({ route }) => ({
         headerShown: false,
         tabBarActiveTintColor: colors.primary,
-        tabBarInactiveTintColor: colors.textMuted,
+        tabBarInactiveTintColor: '#B7BCB4',
         tabBarLabelStyle: {
           ...typography.small,
           fontWeight: '600',
-          marginTop: -2,
+          marginTop: 2,
         },
         tabBarStyle: {
-          backgroundColor: colors.surface,
-          borderTopColor: colors.borderLight,
-          height: 60,
-          paddingBottom: 8,
-          paddingTop: 6,
+          backgroundColor: colors.accent,
+          borderTopColor: colors.accent,
+          height: 72,
+          paddingBottom: 10,
+          paddingTop: 8,
         },
-        tabBarIcon: () => null,
+        tabBarIcon: ({ focused, color }) => (
+          <Text style={{ color, fontSize: 13, marginTop: 3 }}>
+            {focused ? TAB_ICONS[route.name].focused : TAB_ICONS[route.name].default}
+          </Text>
+        ),
         tabBarLabel: route.name,
       })}
     >

@@ -37,16 +37,18 @@ export function RegisterScreen({ navigation }: AuthScreenProps<'Register'>) {
   const handleRegister = async () => {
     if (!validate()) return;
     setLoading(true);
-    const { error } = await signUp(email.trim(), password, fullName.trim());
+    const { error, requiresEmailConfirmation } = await signUp(email.trim(), password, fullName.trim());
     setLoading(false);
     if (error) {
       Alert.alert('Registration Failed', error.message);
-    } else {
+    } else if (requiresEmailConfirmation) {
       Alert.alert(
-        'Check Your Email',
-        'We sent a confirmation link to your email. Please verify to continue.',
+        'Verify your email',
+        'Your account was created. Check your email to confirm your account, then sign in.',
         [{ text: 'OK', onPress: () => navigation.navigate('Login') }],
       );
+    } else {
+      navigation.navigate('PhoneNumber', { email: email.trim() });
     }
   };
 
@@ -59,10 +61,16 @@ export function RegisterScreen({ navigation }: AuthScreenProps<'Register'>) {
         contentContainerStyle={styles.scroll}
         keyboardShouldPersistTaps="handled"
       >
-        <View style={styles.form}>
-          <Text style={styles.title}>Create Account</Text>
-          <Text style={styles.subtitle}>
-            Start locking your money and spending smarter
+        <View style={styles.header}>
+          <Text style={styles.badge}>JOIN KWIKBUDGET</Text>
+          <Text style={styles.headerTitle}>Create account</Text>
+          <Text style={styles.headerSubtitle}>Make every cedi intentional.</Text>
+        </View>
+
+        <View style={styles.formCard}>
+          <Text style={styles.formTitle}>Create Account</Text>
+          <Text style={styles.formIntro}>
+            Start locking your money and spending smarter.
           </Text>
 
           <Input
@@ -125,16 +133,46 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'center',
     padding: spacing.lg,
+    paddingTop: spacing.xl,
+    paddingBottom: spacing.xl,
   },
-  form: {
+  header: {
+    backgroundColor: colors.accent,
+    borderRadius: 26,
+    padding: spacing.lg,
+    marginBottom: spacing.lg,
+  },
+  badge: {
+    ...typography.small,
+    color: colors.primary,
+    letterSpacing: 1.8,
+    fontWeight: '700',
+    marginBottom: spacing.sm,
+  },
+  formCard: {
+    backgroundColor: colors.surface,
+    borderRadius: 26,
+    borderWidth: 1,
+    borderColor: colors.border,
+    padding: spacing.lg,
     marginBottom: spacing.xl,
   },
-  title: {
+  headerTitle: {
     ...typography.h2,
+    color: colors.textInverse,
+    marginBottom: spacing.xs,
+  },
+  headerSubtitle: {
+    ...typography.body,
+    color: '#D4D8D2',
+    marginBottom: 0,
+  },
+  formTitle: {
+    ...typography.h3,
     color: colors.text,
     marginBottom: spacing.xs,
   },
-  subtitle: {
+  formIntro: {
     ...typography.caption,
     color: colors.textSecondary,
     marginBottom: spacing.lg,

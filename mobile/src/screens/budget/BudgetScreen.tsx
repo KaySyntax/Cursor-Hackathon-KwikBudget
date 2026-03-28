@@ -8,10 +8,10 @@ export function BudgetScreen() {
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
       <Text style={styles.title}>Budget</Text>
-      <Text style={styles.subtitle}>Track and manage your daily spending</Text>
+      <Text style={styles.subtitle}>Track spend velocity and stay on plan in real time.</Text>
 
       <Card variant="elevated" style={styles.summaryCard}>
-        <Text style={styles.summaryLabel}>Daily Budget</Text>
+        <Text style={styles.summaryLabel}>Daily budget</Text>
         <Text style={styles.summaryAmount}>{CURRENCY_SYMBOL}0.00</Text>
         <View style={styles.progressBar}>
           <View style={[styles.progressFill, { width: '0%' }]} />
@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: spacing.lg,
+    paddingTop: spacing.xl,
     paddingBottom: spacing.xxl,
   },
   title: {
@@ -49,27 +50,31 @@ const styles = StyleSheet.create({
     color: colors.text,
   },
   subtitle: {
-    ...typography.caption,
+    ...typography.body,
     color: colors.textSecondary,
     marginTop: spacing.xs,
     marginBottom: spacing.lg,
   },
   summaryCard: {
+    backgroundColor: colors.accent,
     padding: spacing.lg,
     marginBottom: spacing.lg,
+    borderRadius: 30,
   },
   summaryLabel: {
-    ...typography.caption,
-    color: colors.textSecondary,
+    ...typography.small,
+    color: '#C8CCC6',
+    letterSpacing: 1,
+    textTransform: 'uppercase',
   },
   summaryAmount: {
     ...typography.amount,
-    color: colors.primary,
+    color: colors.textInverse,
     marginVertical: spacing.sm,
   },
   progressBar: {
-    height: 8,
-    backgroundColor: colors.borderLight,
+    height: 10,
+    backgroundColor: '#2E342E',
     borderRadius: 4,
     overflow: 'hidden',
   },
@@ -80,7 +85,7 @@ const styles = StyleSheet.create({
   },
   progressText: {
     ...typography.small,
-    color: colors.textMuted,
+    color: '#D3D8D1',
     marginTop: spacing.sm,
   },
   sectionTitle: {
@@ -91,6 +96,7 @@ const styles = StyleSheet.create({
   emptyCard: {
     alignItems: 'center',
     paddingVertical: spacing.xl,
+    borderRadius: 22,
   },
   emptyText: {
     ...typography.body,

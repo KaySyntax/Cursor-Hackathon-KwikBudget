@@ -27,8 +27,8 @@ function DashboardScreen() {
         <span className="h-1.5 w-[28%] rounded-sm bg-white/20" />
         <span className="h-1.5 w-[18%] rounded-sm bg-white/20" />
       </div>
-      <div className="font-sans text-[1.35rem] font-extrabold text-white">$24,580</div>
-      <div className="mb-3.5 text-[0.65rem] text-kwik-muted">Total balance</div>
+      <div className="font-sans text-[1.35rem] font-extrabold text-white">$20</div>
+      <div className="mb-3.5 text-[0.65rem] text-kwik-muted">Left to spend today</div>
       <div className="mt-auto flex flex-1 items-end gap-1.5 pt-2">
         {[40, 72, 55, 88, 64].map((h, i) => (
           <span
@@ -49,7 +49,7 @@ function ChartScreen() {
   return (
     <div className="flex h-full flex-col px-3 pb-3 pt-4">
       <div className="mb-2.5 font-sans text-[0.7rem] font-bold text-kwik-muted">
-        Spending trend
+        Month on track
       </div>
       <svg
         className="min-h-20 w-full flex-1"
@@ -116,10 +116,10 @@ export function Hero() {
                 <SparkleGraphic />
                 <span>{t('Smarter')}</span>
               </span>{' '}
-              {t('Financial Tools. Built for You.')}
+              {t('Spending. One Day at a Time.')}
             </h1>
-            <p className="mb-7 max-w-[34ch] text-left font-sans text-[1.05rem] leading-[1.55] text-kwik-muted max-[900px]:mx-auto max-[900px]:text-center">
-              {t('KwikBudget brings budgets, transfers, and investments together so you can see the full picture—and act on it—in seconds, not spreadsheets.')}
+            <p className="mb-7 max-w-[40rem] text-left font-sans text-[1.05rem] leading-[1.55] text-kwik-muted max-[900px]:mx-auto max-[900px]:text-center">
+              {t("KwikBudget doesn't just track your money—it controls how you spend it. Lock your funds for the month, get a fixed daily allowance, and avoid blowing cash in week one. Built for students, young professionals, and anyone on a fixed income. Need more today? Emergency unlock is there—with clear trade-offs so discipline and flexibility stay balanced.")}
             </p>
             <div className="flex flex-wrap gap-3.5 max-[900px]:justify-center">
               <a

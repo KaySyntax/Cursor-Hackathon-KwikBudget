@@ -6,7 +6,8 @@ function FooterPhoneScreen() {
   return (
     <div className="box-border h-full p-3.5">
       <div className="mb-4 h-2 w-[40%] rounded-full bg-white/20" />
-      <div className="mb-4 font-sans text-[1.05rem] font-extrabold text-white">$12,400</div>
+      <div className="mb-1 font-sans text-[1.05rem] font-extrabold text-white">GHS 600</div>
+      <div className="mb-4 text-[0.65rem] text-kwik-muted">Locked · 24 days left</div>
       <div className="flex gap-2">
         <span className="h-12 flex-1 rounded-[10px] border border-kwik-lime/35 bg-kwik-lime/20" />
         <span className="h-12 flex-1 rounded-[10px] border border-kwik-lime/35 bg-kwik-lime/20" />
@@ -30,8 +31,8 @@ export function FooterCTA() {
         <div className="grid grid-cols-[1.1fr_1fr_1.1fr] items-start gap-8 max-[960px]:grid-cols-1">
           <div>
             <Logo />
-            <p className="mt-4 max-w-[28ch] font-sans text-[0.92rem] leading-[1.55] text-kwik-muted max-[960px]:max-w-none">
-              {t('KwikBudget helps people and teams move money with clarity—budgeting, transfers, and investments in one place.')}
+            <p className="mt-4 max-w-[32ch] font-sans text-[0.92rem] leading-[1.55] text-kwik-muted max-[960px]:max-w-none">
+              {t('KwikBudget locks your money for the month and releases it as a daily allowance—so you build real discipline, dodge end-of-month panic, and still have emergency unlock when life refuses to cooperate.')}
             </p>
           </div>
           <nav className="grid grid-cols-2 gap-6" aria-label="Quick links">
@@ -99,8 +100,8 @@ export function FooterCTA() {
             </div>
           </nav>
           <div className="relative min-h-[200px] overflow-hidden rounded-[20px] bg-kwik-lime px-[22px] pb-[100px] pt-6 text-kwik-black max-[960px]:pb-[88px]">
-            <p className="relative z-10 m-0 mb-4 max-w-[16ch] font-sans text-[1.15rem] font-extrabold leading-tight">
-              {t('Start Managing Your Money Smarter Today')}
+            <p className="relative z-10 m-0 mb-4 max-w-[18ch] font-sans text-[1.15rem] font-extrabold leading-tight">
+              {t('Stop surviving the month. Start owning each day.')}
             </p>
             <a
               href="#top"
