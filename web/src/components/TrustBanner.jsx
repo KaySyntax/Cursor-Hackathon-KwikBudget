@@ -1,35 +1,32 @@
-import {
-  siDropbox,
-  siGithub,
-  siIntercom,
-  siMailchimp,
-  siNotion,
-  siSquare,
-} from 'simple-icons'
 import { useTranslation } from '../context/TranslationContext'
 
-const brands = [
-  { icon: siMailchimp, name: 'Mailchimp' },
-  { icon: siNotion, name: 'Notion' },
-  { icon: siIntercom, name: 'Intercom' },
-  { icon: siDropbox, name: 'Dropbox' },
-  { icon: siSquare, name: 'Square' },
-  { icon: siGithub, name: 'GitHub' },
+/**
+ * Partner marks use bundled SVGs in /public/logos/.
+ * MTN, Flutterwave, Kuda, Paystack: PaystackHQ/nigerialogos (MIT).
+ */
+
+const partners = [
+  { id: 'mtn', src: '/logos/mtn.svg', alt: 'MTN', maxWidth: '6.5rem' },
+  { id: 'kuda', src: '/logos/kuda_bank.svg', alt: 'Kuda', maxWidth: '6rem' },
+  { id: 'paystack', src: '/logos/paystack.svg', alt: 'Paystack', maxWidth: '5rem' },
+  {
+    id: 'flutterwave',
+    src: '/logos/flutterwave.svg',
+    alt: 'Flutterwave',
+    maxWidth: '9rem',
+  },
 ]
 
-function BrandLogo({ icon, label }) {
-  const fill = `#${icon.hex}`
-
+function PartnerLogo({ src, alt, maxWidth, heightClass = 'h-10' }) {
   return (
-    <svg
-      role="img"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-      className="h-8 w-auto max-w-[6.5rem] shrink-0"
-      aria-label={label}
-    >
-      <path d={icon.path} fill={fill} />
-    </svg>
+    <img
+      src={src}
+      alt={alt}
+      className={`${heightClass} w-auto object-contain object-center`}
+      style={{ maxWidth }}
+      loading="lazy"
+      decoding="async"
+    />
   )
 }
 
@@ -45,14 +42,19 @@ export function TrustBanner() {
         <p className="mx-auto mb-7 max-w-[36rem] font-sans text-[1.05rem] font-semibold leading-snug text-kwik-black">
           {t("For students, young professionals, and anyone on a fixed income who's tired of running out of money before the month ends.")}
         </p>
-        <ul className="m-0 flex list-none flex-wrap items-center justify-center gap-x-12 gap-y-8 p-0">
-          {brands.map((b) => (
+        <ul className="m-0 flex list-none flex-wrap items-center justify-center gap-x-10 gap-y-9 p-0 md:gap-x-12">
+          {partners.map((p) => (
             <li
-              key={b.name}
-              className="flex flex-col items-center gap-2 opacity-90 transition-opacity hover:opacity-100"
+              key={p.id}
+              className="flex flex-col items-center justify-center opacity-95 transition-opacity hover:opacity-100"
             >
-              <div className="flex h-12 min-w-[7rem] items-center justify-center px-2">
-                <BrandLogo icon={b.icon} label={b.name} />
+              <div className="flex min-h-[2.75rem] items-center justify-center px-2">
+                <PartnerLogo
+                  src={p.src}
+                  alt={p.alt}
+                  maxWidth={p.maxWidth}
+                  heightClass={p.heightClass ?? 'h-10'}
+                />
               </div>
             </li>
           ))}

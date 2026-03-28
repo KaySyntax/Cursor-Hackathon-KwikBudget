@@ -1,4 +1,3 @@
-import { useId } from 'react'
 import { Logo } from './Logo'
 import { IsometricPhone } from './IsometricPhone'
 import { LanguageSwitcher } from './LanguageSwitcher'
@@ -17,69 +16,6 @@ function SparkleGraphic() {
         <circle cx="38" cy="10" r="3" fill="#c8ff4a" opacity="0.9" />
       </svg>
     </span>
-  )
-}
-
-function DashboardScreen() {
-  return (
-    <div className="flex h-full flex-col p-3">
-      <div className="mb-3 flex justify-between">
-        <span className="h-1.5 w-[28%] rounded-sm bg-white/20" />
-        <span className="h-1.5 w-[18%] rounded-sm bg-white/20" />
-      </div>
-      <div className="font-sans text-[1.35rem] font-extrabold text-white">$20</div>
-      <div className="mb-3.5 text-[0.65rem] text-kwik-muted">Left to spend today</div>
-      <div className="mt-auto flex flex-1 items-end gap-1.5 pt-2">
-        {[40, 72, 55, 88, 64].map((h, i) => (
-          <span
-            key={i}
-            className="min-h-[20%] flex-1 rounded-t bg-gradient-to-t from-kwik-lime/35 to-kwik-lime"
-            style={{ height: `${h}%` }}
-          />
-        ))}
-      </div>
-    </div>
-  )
-}
-
-function ChartScreen() {
-  const gid = useId().replace(/:/g, '')
-  const gradId = `kbGrad-${gid}`
-
-  return (
-    <div className="flex h-full flex-col px-3 pb-3 pt-4">
-      <div className="mb-2.5 font-sans text-[0.7rem] font-bold text-kwik-muted">
-        Month on track
-      </div>
-      <svg
-        className="min-h-20 w-full flex-1"
-        viewBox="0 0 120 60"
-        preserveAspectRatio="none"
-      >
-        <path
-          d="M0 45 Q30 50 45 35 T90 20 T120 8"
-          fill="none"
-          stroke="#c8ff4a"
-          strokeWidth="2.5"
-        />
-        <path
-          d="M0 45 Q30 50 45 35 T90 20 T120 8 V60 H0 Z"
-          fill={`url(#${gradId})`}
-          opacity="0.35"
-        />
-        <defs>
-          <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#c8ff4a" />
-            <stop offset="100%" stopColor="transparent" />
-          </linearGradient>
-        </defs>
-      </svg>
-      <div className="mt-2 flex gap-1.5">
-        <span className="size-1.5 rounded-full bg-kwik-lime" />
-        <span className="size-1.5 rounded-full bg-white/25" />
-        <span className="size-1.5 rounded-full bg-white/25" />
-      </div>
-    </div>
   )
 }
 
@@ -137,12 +73,16 @@ export function Hero() {
             </div>
           </div>
           <div className="flex min-h-[300px] items-end justify-end gap-2 max-[900px]:order-1 max-[900px]:min-h-[240px] max-[900px]:justify-center">
-            <IsometricPhone tilt="left" float>
-              <DashboardScreen />
-            </IsometricPhone>
-            <IsometricPhone tilt="right" float>
-              <ChartScreen />
-            </IsometricPhone>
+            <IsometricPhone
+              tilt="left"
+              float
+              screenshot={{ src: '/screenshots/home.png', alt: '' }}
+            />
+            <IsometricPhone
+              tilt="right"
+              float
+              screenshot={{ src: '/screenshots/budget.png', alt: '' }}
+            />
           </div>
         </div>
       </div>

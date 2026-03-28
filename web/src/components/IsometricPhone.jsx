@@ -8,6 +8,8 @@ export function IsometricPhone({
   compact = false,
   shellClassName = '',
   label = '',
+  /** When set, fills the screen with a real device screenshot (hides the faux Dynamic Island). */
+  screenshot = null,
 }) {
   const defaultTransform =
     float && tilt === 'left'
@@ -33,6 +35,8 @@ export function IsometricPhone({
   const outerR = compact ? 'rounded-[24px]' : 'rounded-[28px]'
   const bezelR = compact ? 'rounded-[21px]' : 'rounded-[25px]'
   const screenR = compact ? 'rounded-[18px]' : 'rounded-[21px]'
+  const hasScreenshot = Boolean(screenshot?.src)
+  const shotPosition = screenshot?.position === 'center' ? 'object-center' : 'object-top'
 
   return (
     <div
@@ -66,37 +70,55 @@ export function IsometricPhone({
                 '[box-shadow:inset_0_0_24px_rgba(0,0,0,0.15)]',
               )}
             >
-              {/* Dynamic Island */}
-              <div
-                className="pointer-events-none absolute left-1/2 top-[6px] z-10 -translate-x-1/2"
-                aria-hidden="true"
-              >
+              {/* Dynamic Island — real screenshots already include the status bar */}
+              {!hasScreenshot ? (
                 <div
-                  className={cn(
-                    'relative overflow-hidden rounded-full bg-[#0a0a0a]',
-                    '[box-shadow:inset_0_1px_1px_rgba(255,255,255,0.12),inset_0_-1px_2px_rgba(0,0,0,0.6),0_2px_6px_rgba(0,0,0,0.35)]',
-                    compact
-                      ? 'h-[9px] min-w-[52px] w-[38%]'
-                      : 'h-[11px] min-w-[58px] w-[36%]',
-                  )}
+                  className="pointer-events-none absolute left-1/2 top-[6px] z-10 -translate-x-1/2"
+                  aria-hidden="true"
                 >
                   <div
-                    className="pointer-events-none absolute inset-0 rounded-full opacity-50"
-                    style={{
-                      background:
-                        'linear-gradient(180deg, rgba(255,255,255,0.16) 0%, transparent 42%)',
-                    }}
-                  />
+                    className={cn(
+                      'relative overflow-hidden rounded-full bg-[#0a0a0a]',
+                      '[box-shadow:inset_0_1px_1px_rgba(255,255,255,0.12),inset_0_-1px_2px_rgba(0,0,0,0.6),0_2px_6px_rgba(0,0,0,0.35)]',
+                      compact
+                        ? 'h-[9px] min-w-[52px] w-[38%]'
+                        : 'h-[11px] min-w-[58px] w-[36%]',
+                    )}
+                  >
+                    <div
+                      className="pointer-events-none absolute inset-0 rounded-full opacity-50"
+                      style={{
+                        background:
+                          'linear-gradient(180deg, rgba(255,255,255,0.16) 0%, transparent 42%)',
+                      }}
+                    />
+                  </div>
                 </div>
-              </div>
+              ) : null}
 
               <div
                 className={cn(
-                  'relative h-full overflow-hidden',
-                  compact ? 'pt-[12px]' : 'pt-[14px]',
+                  'relative h-full min-h-0 w-full overflow-hidden',
+                  hasScreenshot ? 'pt-0' : compact ? 'pt-[12px]' : 'pt-[14px]',
                 )}
               >
-                {children}
+                {hasScreenshot ? (
+                  <img
+                    src={screenshot.src}
+                    alt={screenshot.alt ?? ''}
+                    className={cn(
+                      'pointer-events-none h-full w-full select-none',
+                      /* Match tall phone screenshots to the bezel: fill frame, keep top (status bar) aligned */
+                      'object-cover',
+                      shotPosition,
+                    )}
+                    loading="lazy"
+                    decoding="async"
+                    draggable={false}
+                  />
+                ) : (
+                  children
+                )}
               </div>
             </div>
           </div>

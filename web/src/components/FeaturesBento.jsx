@@ -74,23 +74,6 @@ function IconInsights() {
   )
 }
 
-function AnalyticsPhoneScreen() {
-  return (
-    <div className="flex h-full flex-col p-2.5">
-      <div className="mb-2 font-sans text-[0.65rem] text-kwik-muted">Daily allowance</div>
-      <div className="flex flex-1 items-end gap-1">
-        {[55, 72, 48, 90, 66, 78].map((h, i) => (
-          <span
-            key={i}
-            className="min-h-[18%] flex-1 rounded-t bg-gradient-to-t from-kwik-lime/25 to-kwik-lime"
-            style={{ height: `${h}%` }}
-          />
-        ))}
-      </div>
-    </div>
-  )
-}
-
 const bentoShell =
   '[transform:perspective(1200px)_rotateX(10deg)_rotateZ(-6deg)_scale(0.95)]'
 
@@ -118,9 +101,11 @@ export function FeaturesBento() {
                 </p>
               </div>
               <div className="flex flex-1 items-center justify-center">
-                <IsometricPhone tilt="left" shellClassName={bentoShell}>
-                  <AnalyticsPhoneScreen />
-                </IsometricPhone>
+                <IsometricPhone
+                  tilt="left"
+                  shellClassName={bentoShell}
+                  screenshot={{ src: '/screenshots/home.png', alt: '' }}
+                />
               </div>
             </div>
           </article>

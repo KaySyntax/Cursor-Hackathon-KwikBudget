@@ -3,21 +3,6 @@ import { Logo } from './Logo'
 import { IsometricPhone } from './IsometricPhone'
 import { useTranslation } from '../context/TranslationContext'
 
-function FooterPhoneScreen() {
-  return (
-    <div className="box-border h-full p-3.5">
-      <div className="mb-4 h-2 w-[40%] rounded-full bg-white/20" />
-      <div className="mb-1 font-sans text-[1.05rem] font-extrabold text-white">GHS 600</div>
-      <div className="mb-4 text-[0.65rem] text-kwik-muted">Locked · 24 days left</div>
-      <div className="flex gap-2">
-        <span className="h-12 flex-1 rounded-[10px] border border-kwik-lime/35 bg-kwik-lime/20" />
-        <span className="h-12 flex-1 rounded-[10px] border border-kwik-lime/35 bg-kwik-lime/20" />
-        <span className="h-12 flex-1 rounded-[10px] border border-kwik-lime/35 bg-kwik-lime/20" />
-      </div>
-    </div>
-  )
-}
-
 const footerShell = '[transform:perspective(1200px)_rotateX(16deg)_rotateZ(10deg)]'
 
 export function FooterCTA() {
@@ -115,9 +100,8 @@ export function FooterCTA() {
                 tilt="right"
                 compact
                 shellClassName={footerShell}
-              >
-                <FooterPhoneScreen />
-              </IsometricPhone>
+                screenshot={{ src: '/screenshots/wallet.png', alt: '' }}
+              />
             </div>
           </div>
         </div>
