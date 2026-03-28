@@ -13,40 +13,23 @@ export async function fetchLanguages() {
   return data.languages
 }
 
-async function translateTextWithRetry(text, targetLanguage, retries = 2) {
-  if (!text?.trim() || targetLanguage === 'en') return text
-
-  for (let attempt = 0; attempt <= retries; attempt++) {
-    try {
-      const res = await fetch(`${API_URL}/translate`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Cache-Control': 'no-cache',
-          'Ocp-Apim-Subscription-Key': API_KEY,
-        },
-        body: JSON.stringify({
-          text,
-          source_language: 'en',
-          target_language: targetLanguage,
-        }),
-      })
-      if (res.status === 429) {
-        await delay(1000 * (attempt + 1))
-        continue
-      }
-      if (!res.ok) throw new Error('Translation failed')
-      const data = await res.json()
-      return data.message || text
-    } catch (err) {
-      if (attempt < retries) {
-        await delay(500 * (attempt + 1))
-        continue
-      }
-      throw err
-    }
-  }
-  return text
+async function translateOne(text, targetLanguage) {
+  const res = await fetch(`${API_URL}/translate`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-cache',
+      'Ocp-Apim-Subscription-Key': API_KEY,
+    },
+    body: JSON.stringify({
+      text,
+      source_language: 'en',
+      target_language: targetLanguage,
+    }),
+  })
+  if (!res.ok) throw new Error('Translation failed')
+  const data = await res.json()
+  return data.message || text
 }
 
 function delay(ms) {
@@ -55,10 +38,11 @@ function delay(ms) {
 
 const cache = new Map()
 
-const BATCH_SIZE = 5
-const BATCH_DELAY = 300
+// Send 10 at a time with 150ms gap — fast but avoids hammering
+const BATCH_SIZE = 10
+const BATCH_DELAY = 150
 
-export async function translateBatch(texts, targetLanguage) {
+export async function translateBatch(texts, targetLanguage, onProgress) {
   if (targetLanguage === 'en') {
     return Object.fromEntries(texts.map((t) => [t, t]))
   }
@@ -75,12 +59,11 @@ export async function translateBatch(texts, targetLanguage) {
     }
   }
 
-  // Process in small batches to avoid rate limits
   for (let i = 0; i < toTranslate.length; i += BATCH_SIZE) {
     const batch = toTranslate.slice(i, i + BATCH_SIZE)
 
     const settled = await Promise.allSettled(
-      batch.map((text) => translateTextWithRetry(text, targetLanguage)),
+      batch.map((text) => translateOne(text, targetLanguage)),
     )
 
     batch.forEach((text, j) => {
@@ -91,7 +74,9 @@ export async function translateBatch(texts, targetLanguage) {
       results[text] = translated
     })
 
-    // Wait between batches to respect rate limits
+    // Let the UI update progressively after each batch
+    if (onProgress) onProgress({ ...results })
+
     if (i + BATCH_SIZE < toTranslate.length) {
       await delay(BATCH_DELAY)
     }

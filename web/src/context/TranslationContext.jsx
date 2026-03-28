@@ -123,7 +123,12 @@ export function TranslationProvider({ children }) {
       setLoading(true)
       try {
         const keys = Object.keys(strings)
-        const result = await translateBatch(keys, lang)
+        const result = await translateBatch(keys, lang, (partial) => {
+          // Update UI progressively as each batch completes
+          if (requestRef.current === requestId) {
+            setTranslations((prev) => ({ ...prev, ...partial }))
+          }
+        })
         if (requestRef.current === requestId) {
           setTranslations(result)
         }
