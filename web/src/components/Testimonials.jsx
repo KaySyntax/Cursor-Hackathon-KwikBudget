@@ -1,20 +1,20 @@
 const reviews = [
   {
-    name: 'Alex Rivera',
+    name: 'Ama K.',
     text:
-      'KwikBudget replaced three apps for our team. The live analytics alone paid for itself in week one.',
-    initials: 'AR',
+      'I used to spend my allowance in ten days and survive on noodles. The daily wallet is annoying in the best way—I actually make it to the end of the month.',
+    initials: 'AK',
   },
   {
-    name: 'Jordan Lee',
+    name: 'Jordan M.',
     text:
-      'Transfers are fast and the security controls give our finance lead real peace of mind.',
-    initials: 'JL',
+      'I don’t trust myself with a big balance in one account. Locking the lump sum and living on the daily number removed so much stress.',
+    initials: 'JM',
   },
   {
-    name: 'Sam Okonkwo',
+    name: 'Sam O.',
     text:
-      'Finally one place for budgets, crypto tracking, and day-to-day banking. Radically simple.',
+      'Emergency unlock saved me when I had a real bill—but the lower allowance afterward kept me honest. Finally an app that enforces discipline, not just charts.',
     initials: 'SO',
   },
 ]

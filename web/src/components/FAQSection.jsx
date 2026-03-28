@@ -5,22 +5,27 @@ const items = [
   {
     q: 'Is my data safe?',
     a:
-      'Yes. KwikBudget encrypts data in transit and at rest, supports hardware-backed keys where available, and lets you review every active session from one place.',
+      'Yes. We use industry-standard encryption, protect sign-in on your phone, and keep a clear record of sessions and sensitive actions—so your money rules aren’t easy to bypass or hide.',
   },
   {
-    q: 'Can I connect my existing bank accounts?',
+    q: 'How is KwikBudget different from other budgeting apps?',
     a:
-      'You can link compatible accounts through our secure partners. Availability varies by region and institution.',
+      'Most apps only track what you spent. KwikBudget actively limits what you can spend by locking your funds and releasing a fixed daily allowance. Discipline is enforced by the product—not by willpower alone.',
   },
   {
-    q: 'Do you support teams and accountants?',
+    q: 'How does the daily allowance work?',
     a:
-      'Yes. Invite collaborators with role-based access, export reports, and share read-only views with your accountant.',
+      'You set a total amount and a time period (for example, GHS 600 over 30 days). The app locks the full amount, calculates your daily slice, and only that portion is available to spend each day—helping you pace through the whole period.',
+  },
+  {
+    q: 'What happens if I use Emergency Unlock?',
+    a:
+      'You can access extra money when you truly need it, but KwikBudget balances flexibility with accountability: expect a smaller future daily allowance, a cooldown before the next unlock, or similar guardrails—so emergencies don’t erase your plan.',
   },
   {
     q: 'What does pricing look like?',
     a:
-      'We offer a generous free tier for individuals and plans for teams that need advanced approvals and reporting.',
+      'We plan a solid free experience for individuals, with premium options for advanced analytics, multiple budgets, and gamified rewards. Some flows may include small fees (for example on certain withdrawals)—always shown upfront.',
   },
 ]
 
