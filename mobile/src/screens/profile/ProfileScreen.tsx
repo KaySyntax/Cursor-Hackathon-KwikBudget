@@ -76,33 +76,36 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: spacing.lg,
+    paddingTop: spacing.xl,
     paddingBottom: spacing.xxl,
   },
   profileCard: {
     alignItems: 'center',
+    backgroundColor: colors.accent,
     padding: spacing.lg,
     marginBottom: spacing.lg,
+    borderRadius: 30,
   },
   avatar: {
     width: 72,
     height: 72,
     borderRadius: 36,
-    backgroundColor: colors.primaryLight,
+    backgroundColor: colors.primary,
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: spacing.md,
   },
   avatarText: {
     ...typography.h1,
-    color: colors.primary,
+    color: colors.text,
   },
   name: {
     ...typography.h3,
-    color: colors.text,
+    color: colors.textInverse,
   },
   email: {
     ...typography.caption,
-    color: colors.textSecondary,
+    color: '#D4D8D2',
     marginTop: spacing.xs,
   },
   sectionTitle: {
@@ -117,6 +120,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.xs,
     marginBottom: spacing.lg,
+    borderRadius: 22,
   },
   menuDivider: {
     height: 1,

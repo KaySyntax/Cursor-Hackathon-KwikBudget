@@ -8,9 +8,10 @@ export function WalletScreen() {
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
       <Text style={styles.title}>Wallet</Text>
-      <Text style={styles.subtitle}>Lock funds and manage daily releases</Text>
+      <Text style={styles.subtitle}>Move money with guardrails that keep you on budget.</Text>
 
       <Card variant="elevated" style={styles.lockCard}>
+        <Text style={styles.cardTag}>TOTAL CASH</Text>
         <View style={styles.lockRow}>
           <View style={styles.lockStat}>
             <Text style={styles.lockLabel}>Locked</Text>
@@ -63,6 +64,7 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: spacing.lg,
+    paddingTop: spacing.xl,
     paddingBottom: spacing.xxl,
   },
   title: {
@@ -70,13 +72,22 @@ const styles = StyleSheet.create({
     color: colors.text,
   },
   subtitle: {
-    ...typography.caption,
+    ...typography.body,
     color: colors.textSecondary,
     marginTop: spacing.xs,
     marginBottom: spacing.lg,
   },
   lockCard: {
+    backgroundColor: colors.accent,
     padding: spacing.lg,
+    marginBottom: spacing.md,
+    borderRadius: 30,
+  },
+  cardTag: {
+    ...typography.small,
+    color: colors.primary,
+    letterSpacing: 1,
+    textTransform: 'uppercase',
     marginBottom: spacing.md,
   },
   lockRow: {
@@ -90,15 +101,15 @@ const styles = StyleSheet.create({
   lockDivider: {
     width: 1,
     height: 40,
-    backgroundColor: colors.border,
+    backgroundColor: 'rgba(255,255,255,0.25)',
   },
   lockLabel: {
     ...typography.caption,
-    color: colors.textSecondary,
+    color: '#D3D8D1',
   },
   lockAmount: {
     ...typography.h2,
-    color: colors.text,
+    color: colors.textInverse,
     marginTop: spacing.xs,
   },
   actionsRow: {
@@ -113,11 +124,13 @@ const styles = StyleSheet.create({
     ...typography.h3,
     color: colors.text,
     marginBottom: spacing.md,
+    marginTop: spacing.sm,
   },
   emptyCard: {
     alignItems: 'center',
     paddingVertical: spacing.xl,
     marginBottom: spacing.lg,
+    borderRadius: 22,
   },
   emptyText: {
     ...typography.body,
