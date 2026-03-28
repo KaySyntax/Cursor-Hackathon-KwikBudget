@@ -35,6 +35,7 @@ export function Testimonials() {
   return (
     <section
       className="bg-kwik-forest py-16 pb-14 text-kwik-white"
+      id="testimonials"
       aria-labelledby="kb-testi-heading"
     >
       <div className="mx-auto max-w-[1200px] px-6">

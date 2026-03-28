@@ -2,9 +2,9 @@ import { IsometricPhone } from './IsometricPhone'
 import { useTranslation } from '../context/TranslationContext'
 
 const shellA =
-  '[transform:perspective(1200px)_rotateX(8deg)_rotateY(-10deg)_rotateZ(-8deg)_scale(1.05)]'
+  '[transform:perspective(1400px)_rotateX(6deg)_rotateY(-8deg)_rotateZ(-6deg)_scale(0.95)]'
 const shellB =
-  '[transform:perspective(1200px)_rotateX(8deg)_rotateY(8deg)_rotateZ(6deg)_scale(1.02)_translateY(16px)]'
+  '[transform:perspective(1400px)_rotateX(6deg)_rotateY(6deg)_rotateZ(5deg)_scale(0.93)_translateY(20px)]'
 
 export function SecuritySection() {
   const { t } = useTranslation()
@@ -24,7 +24,7 @@ export function SecuritySection() {
           </a>
         </div>
         <div className="max-[960px]:order-2">
-          <div className="flex min-h-[320px] items-end justify-center gap-1 max-[960px]:min-h-[280px]">
+          <div className="flex min-h-[400px] items-end justify-center gap-3 max-[960px]:min-h-[340px]">
             <IsometricPhone
               tilt="left"
               shellClassName={shellA}

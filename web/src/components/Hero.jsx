@@ -1,6 +1,8 @@
+import { useState, useCallback } from 'react'
 import { Logo } from './Logo'
 import { IsometricPhone } from './IsometricPhone'
 import { LanguageSwitcher } from './LanguageSwitcher'
+import { MobileMenu } from './MobileMenu'
 import { useTranslation } from '../context/TranslationContext'
 
 function SparkleGraphic() {
@@ -21,6 +23,8 @@ function SparkleGraphic() {
 
 export function Hero() {
   const { t } = useTranslation()
+  const [menuOpen, setMenuOpen] = useState(false)
+  const closeMenu = useCallback(() => setMenuOpen(false), [])
 
   return (
     <header
@@ -38,12 +42,15 @@ export function Hero() {
             <LanguageSwitcher />
             <button
               type="button"
+              onClick={() => setMenuOpen(true)}
               className="cursor-pointer rounded-full border-none bg-kwik-lime px-[18px] py-2.5 font-sans text-[0.85rem] font-bold text-kwik-black transition-colors active:scale-[0.98] hover:bg-kwik-lime-hover"
             >
               {t('Menu')}
             </button>
           </div>
         </div>
+
+        <MobileMenu open={menuOpen} onClose={closeMenu} />
 
         <div className="grid items-center gap-10 max-[900px]:grid-cols-1 grid-cols-2">
           <div className="max-[900px]:order-2 max-[900px]:text-center">
@@ -72,7 +79,7 @@ export function Hero() {
               </a>
             </div>
           </div>
-          <div className="flex min-h-[300px] items-end justify-end gap-2 max-[900px]:order-1 max-[900px]:min-h-[240px] max-[900px]:justify-center">
+          <div className="flex min-h-[400px] items-end justify-end gap-4 max-[900px]:order-1 max-[900px]:min-h-[340px] max-[900px]:justify-center">
             <IsometricPhone
               tilt="left"
               float
@@ -81,6 +88,7 @@ export function Hero() {
             <IsometricPhone
               tilt="right"
               float
+              className="mt-8"
               screenshot={{ src: '/screenshots/budget.png', alt: '' }}
             />
           </div>

@@ -3,7 +3,7 @@ import { Logo } from './Logo'
 import { IsometricPhone } from './IsometricPhone'
 import { useTranslation } from '../context/TranslationContext'
 
-const footerShell = '[transform:perspective(1200px)_rotateX(16deg)_rotateZ(10deg)]'
+const footerShell = '[transform:perspective(1400px)_rotateX(12deg)_rotateZ(8deg)]'
 
 export function FooterCTA() {
   const { t } = useTranslation()
@@ -85,7 +85,7 @@ export function FooterCTA() {
               </ul>
             </div>
           </nav>
-          <div className="relative min-h-[200px] overflow-hidden rounded-[20px] bg-kwik-lime px-[22px] pb-[100px] pt-6 text-kwik-black max-[960px]:pb-[88px]">
+          <div className="relative min-h-[220px] overflow-hidden rounded-[20px] bg-kwik-lime px-[22px] pb-[120px] pt-6 text-kwik-black max-[960px]:pb-[100px]">
             <p className="relative z-10 m-0 mb-4 max-w-[18ch] font-sans text-[1.15rem] font-extrabold leading-tight">
               {t('Stop surviving the month. Start owning each day.')}
             </p>
@@ -95,7 +95,7 @@ export function FooterCTA() {
             >
               {t('Get Started')}
             </Link>
-            <div className="absolute -bottom-10 -right-3 z-0 -rotate-12">
+            <div className="absolute -bottom-14 -right-4 z-0 -rotate-12">
               <IsometricPhone
                 tilt="right"
                 compact

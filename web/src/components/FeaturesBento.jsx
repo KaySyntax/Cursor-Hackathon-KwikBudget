@@ -75,7 +75,7 @@ function IconInsights() {
 }
 
 const bentoShell =
-  '[transform:perspective(1200px)_rotateX(10deg)_rotateZ(-6deg)_scale(0.95)]'
+  '[transform:perspective(1400px)_rotateX(8deg)_rotateZ(-5deg)_scale(0.92)]'
 
 export function FeaturesBento() {
   const { t } = useTranslation()
@@ -91,7 +91,7 @@ export function FeaturesBento() {
         </p>
         <div className="grid grid-cols-3 gap-5 max-[900px]:grid-cols-1">
           <article className="col-span-2 rounded-[20px] border-2 border-kwik-forest/12 bg-white p-6 max-[900px]:col-span-1">
-            <div className="flex min-h-[200px] items-stretch gap-6 max-[900px]:min-h-0 max-[900px]:flex-col">
+            <div className="flex min-h-[320px] items-stretch gap-6 max-[900px]:min-h-0 max-[900px]:flex-col">
               <div className="flex w-[38%] flex-col justify-center max-[900px]:w-full">
                 <h3 className="mb-2 font-sans text-[1.1rem] font-extrabold text-kwik-black">
                   {t('Daily Wallet')}
